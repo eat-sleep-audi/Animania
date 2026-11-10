@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Animania | Android Customization</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" href="favicon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --navy:#0b1c2d;
+    --surface:#13293d;
+    --surface-2:#16324f;
+    --primary:#9b6cff;
+    --primary-light:#bd9cff;
+    --text:#e6edf3;
+    --subtext:#9fb3c8;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    margin:0;
+    font-family:'Roboto',sans-serif;
+    background:var(--navy);
+    color:var(--text);
+    text-align:center;
+}
+
+.top-nav {
+    background:var(--surface);
+    padding:18px 10px;
+    border-bottom:1px solid var(--surface-2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+}
+
+.nav-item {
+    text-decoration:none;
+    color:var(--subtext);
+    font-size:14px;
+    font-weight:500;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    transition:0.2s ease;
+}
+
+.nav-item:hover {
+    color:white;
+    transform:translateY(-2px);
+}
+
+.nav-icon {
+    width:56px;
+    height:56px;
+    object-fit:cover;
+    border-radius:16px;
+    box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+
+.container {
+    max-width:1000px;
+    margin:auto;
+    padding:65px 20px;
+}
+
+.logo {
+    width:115px;
+    margin-bottom:22px;
+    border-radius:25px;
+    box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+
+h1 {
+    font-size:46px;
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.tagline {
+    font-size:21px;
+    color:var(--subtext);
+    margin-bottom:18px;
+    line-height:1.5;
+}
+
+.intro {
+    max-width:720px;
+    margin:0 auto;
+    color:var(--subtext);
+    font-size:16px;
+    line-height:1.8;
+}
+
+.play-button {
+    display:inline-block;
+    margin-top:25px;
+    transition:0.25s ease;
+}
+
+.play-button img {
+    width:240px;
+}
+
+.play-button:hover {
+    transform:translateY(-3px);
+}
+
+.section {
+    margin-top:75px;
+    text-align:left;
+}
+
+.section h2 {
+    text-align:center;
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.section-description {
+    text-align:center;
+    color:var(--subtext);
+    line-height:1.7;
+    max-width:700px;
+    margin:0 auto 32px;
+}
+
+.features {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.feature {
+    background:var(--surface);
+    padding:24px;
+    border-radius:20px;
+    border:1px solid var(--surface-2);
+    box-shadow:0 8px 18px rgba(0,0,0,.3);
+    transition:0.2s ease;
+}
+
+.feature:hover {
+    transform:translateY(-3px);
+}
+
+.feature h3 {
+    margin:0 0 12px;
+    font-size:19px;
+}
+
+.feature p {
+    color:var(--subtext);
+    line-height:1.7;
+    margin:0;
+}
+
+.pro {
+    margin-top:75px;
+    background:linear-gradient(135deg,#241943,#172c49);
+    border:1px solid #60449c;
+    border-radius:22px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.pro h2 {
+    font-size:28px;
+    margin-top:0;
+}
+
+.pro p {
+    color:var(--subtext);
+    line-height:1.8;
+    max-width:700px;
+    margin:12px auto;
+}
+
+.pro-highlight {
+    color:var(--primary-light);
+    font-weight:700;
+}
+
+.steps {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:18px;
+}
+
+.step {
+    background:var(--surface);
+    padding:22px;
+    border-radius:18px;
+    border:1px solid var(--surface-2);
+}
+
+.step h3 {
+    margin-top:0;
+}
+
+.step p {
+    color:var(--subtext);
+    line-height:1.7;
+    margin-bottom:0;
+}
+
+.compatibility {
+    background:var(--surface);
+    border:1px solid var(--surface-2);
+    padding:25px;
+    border-radius:20px;
+}
+
+.compatibility p {
+    color:var(--subtext);
+    line-height:1.8;
+}
+
+.other-apps {
+    margin-top:75px;
+    text-align:left;
+}
+
+.other-apps h2 {
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.app-link {
+    display:inline-block;
+    margin-top:15px;
+    color:white;
+    background:var(--primary);
+    padding:12px 22px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.2s ease;
+}
+
+.app-link:hover {
+    transform:translateY(-2px);
+}
+
+.footer {
+    margin-top:75px;
+    color:var(--subtext);
+    font-size:14px;
+    line-height:1.8;
+}
+
+.footer a {
+    color:var(--subtext);
+}
+
+@media(max-width:600px) {
+    h1 {
+        font-size:36px;
+    }
+
+    .container {
+        padding:45px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<div class="top-nav">
+
+    <a href="https://eat-sleep-audi.github.io/heatingblanketlabs/" class="nav-item">
+        <img src="heatingblanketlabs-icon.png" class="nav-icon" alt="HeatingBlanketLabs">
+        HeatingBlanketLabs
+    </a>
+
+    <a href="https://eat-sleep-audi.github.io/call-sentinel/" class="nav-item">
+        <img src="callsentinel-icon.png" class="nav-icon" alt="Call Sentinel">
+        Call Sentinel
+    </a>
+
+    <a href="https://eat-sleep-audi.github.io/split-decisions-website/" class="nav-item">
+        <img src="splitdecisions-icon.png" class="nav-icon" alt="Split Decisions">
+        Split Decisions
+    </a>
+
+    <a href="https://eat-sleep-audi.github.io/animania/" class="nav-item">
+        <img src="animania-icon.png" class="nav-icon" alt="Animania">
+        Animania
+    </a>
+
+</div>
+
+<!-- HERO -->
+
+<div class="container">
+
+    <img src="animania-icon.png" class="logo" alt="Animania Logo">
+
+    <h1>Animania</h1>
+
+    <div class="tagline">
+        Make Android move your way.
+    </div>
+
+    <p class="intro">
+        Your Android device. Your style. Your animations.
+        Animania brings powerful personalization features
+        together in one place, letting you customize the
+        way your device looks, moves, and responds.
+    </p>
+
+    <!-- Replace # with your Google Play URL when ready -->
+
+    <a href="#" class="play-button" target="_blank" rel="noopener noreferrer">
+        <img src="google-play-badge.png" alt="Get it on Google Play">
+    </a>
+
+    <!-- FEATURES -->
+
+    <div class="section">
+
+        <h2>Make Every Interaction Your Own</h2>
+
+        <p class="section-description">
+            From notifications to music visualizations,
+            Animania gives you more ways to personalize
+            your Android experience.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+                <h3>🔔 Notification Animations</h3>
+                <p>
+                    Give incoming notifications a personality
+                    of their own. Choose stock app icons,
+                    emojis, or use your own custom photos
+                    with Pro mode.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>⚡ Charging Animations</h3>
+                <p>
+                    Add a personalized visual experience
+                    whenever you connect your device
+                    to a charger.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>🔓 Unlock Animations</h3>
+                <p>
+                    Customize the visual experience
+                    when unlocking your device with
+                    personalized animation effects.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>🌈 Edge Lighting</h3>
+                <p>
+                    Add colorful edge lighting effects
+                    with notification support to make
+                    incoming alerts stand out.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>✨ Notch Glow</h3>
+                <p>
+                    Bring your camera cutout to life
+                    with animated glow effects and
+                    notification animations.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>🎵 MusicEQ</h3>
+                <p>
+                    Add music visualizations to your
+                    experience and display album art
+                    directly in your status bar.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>🎞️ Custom Status Bar GIFs</h3>
+                <p>
+                    Use your own custom GIFs to create
+                    a unique status bar experience
+                    alongside notifications.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PRO FEATURES -->
+
+    <div class="pro">
+
+        <h2>💜 Want to Try Pro First?</h2>
+
+        <p>
+            Not sure if you want to buy Pro yet?
+            No problem. Animania lets you try premium
+            features before making a purchase.
+        </p>
+
+        <p>
+            Watch a rewarded advertisement and unlock
+            <span class="pro-highlight">4 hours of Pro access</span>.
+        </p>
+
+        <p>
+            Explore premium customization features
+            and experience more of what Animania offers
+            before deciding if Pro is right for you.
+        </p>
+
+    </div>
+
+    <!-- HOW IT WORKS -->
+
+    <div class="section">
+
+        <h2>Getting Started</h2>
+
+        <p class="section-description">
+            Personalizing your device starts with just
+            a few simple steps.
+        </p>
+
+        <div class="steps">
+
+            <div class="step">
+                <h3>1. Open Animania</h3>
+                <p>
+                    Explore the available customization
+                    features and discover what you can change.
+                </p>
+            </div>
+
+            <div class="step">
+                <h3>2. Choose Your Style</h3>
+                <p>
+                    Select the animations, effects,
+                    and visualizations you want.
+                </p>
+            </div>
+
+            <div class="step">
+                <h3>3. Customize</h3>
+                <p>
+                    Adjust the available settings
+                    and personalize your experience.
+                </p>
+            </div>
+
+            <div class="step">
+                <h3>4. Make It Yours</h3>
+                <p>
+                    Enjoy an Android experience
+                    that reflects your own style.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- COMPATIBILITY -->
+
+    <div class="section">
+
+        <h2>Android Compatibility</h2>
+
+        <div class="compatibility">
+
+            <p>
+                Animania is designed for Android devices
+                and brings multiple customization features
+                together in one application.
+            </p>
+
+            <p>
+                Available features and behavior may vary
+                depending on your device manufacturer,
+                Android version, system software,
+                permissions, and device capabilities.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- OTHER APPS -->
+
+    <div class="other-apps">
+
+        <h2>Also from HeatingBlanketLabs</h2>
+
+        <div class="feature">
+
+            <h3>📵 Call Sentinel</h3>
+
+            <p>
+                Block spam calls, silence unknown callers,
+                and keep your phone distraction-free.
+            </p>
+
+            <a href="https://eat-sleep-audi.github.io/call-sentinel/"
+               class="app-link">
+                Visit Call Sentinel →
+            </a>
+
+        </div>
+
+        <div class="feature">
+
+            <h3>🖥️ Split Decisions</h3>
+
+            <p>
+                Launch two apps simultaneously,
+                save your favorite app pairs,
+                and make Android multitasking easier.
+            </p>
+
+            <a href="https://eat-sleep-audi.github.io/split-decisions-website/"
+               class="app-link">
+                Visit Split Decisions →
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        Built by HeatingBlanketLabs • Android Edition<br>
+
+        <a href="privacy.html">Privacy Policy & FAQ</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
